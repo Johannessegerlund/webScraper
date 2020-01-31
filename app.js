@@ -4,7 +4,7 @@ const calender = require('./calender')
 const cinema = require('./cinema')
 const dinner = require('./dinner')
 
-  /**
+/**
  * Använder mig av urln sedan får jag html sidorna.
  * Scrapar days för att plocka fram informationen om vilka dagar de är tillgängliga.
  * Sedan book events för att samanställa tider som passar angående film och resturang.
@@ -13,7 +13,7 @@ const dinner = require('./dinner')
  *@param {Function} movies
  *@param {Function} resturang
  */
-// 'http://vhost3.lnu.se:20080/weekend'
+
 ;(async () => {
   const url = process.argv.slice(2)
   if (url.length === 0) {
@@ -21,6 +21,7 @@ const dinner = require('./dinner')
     process.exit(0)
   }
   const [calendarURL, cinemaURL, dinnerURL] = await scrape.getLinks(url)
+
   const days = await calender.getAvailableDays(calendarURL)
 
   const movies = await cinema.getMovies(cinemaURL)
@@ -28,5 +29,8 @@ const dinner = require('./dinner')
   const resturant = await dinner.getDinner(dinnerURL)
 
   const bookEvents = await helper.booking(days, movies, resturant)
-  console.log(bookEvents)
+
+  console.log('\n Recommendations \n =============== \n')
+  console.log('* On ' + bookEvents[0].day + ' the movie ' + '"' + bookEvents[0].movieTitle + '"' + ' starts at ' + bookEvents[0].movieStart + ' and there is a free table between ' + bookEvents[0].resturantStart)
+  console.log('* On ' + bookEvents[1].day + ' the movie ' + '"' + bookEvents[1].movieTitle + '"' + ' starts at ' + bookEvents[1].movieStart + ' and there is a free table between ' + bookEvents[1].resturantStart)
 })()

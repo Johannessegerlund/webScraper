@@ -1,5 +1,4 @@
 const { getBody } = require('./scrape')
-const fetch = require('node-fetch')
 const axios = require('axios')
 /**
  * Här fetchar jag titel dag och id för filmerna gör sedan dessa till läsbar text och utan punkter etc
@@ -16,7 +15,7 @@ const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
       returningDayAndMovie.push({
         title,
         day: day.toLowerCase(),
-        time: time.time.substring(0, 2),
+        time: time.time.substring(0, 5),
         movie: time.movie.substring(0, 2)
       })
     }
@@ -28,8 +27,7 @@ const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
 /**
  * Går igenom filmerna och scrapar sidan sedan lopar jag igenom dagar med film titel.
  *
- * @param url
- * @param {Function} getMovies
+ * @param {string} url
  */
 const getMovies = async (url) => {
   let day = ''
@@ -44,7 +42,6 @@ const getMovies = async (url) => {
     .map(option => ({ id: option.value, title: option.textContent }))
 
   for (let i = 0; i < days.length; i++) {
-    console.log(days[i].day)
     if (days[i].day === 'Friday') {
       day = '05'
     } else if (days[i].day === 'Saturday') {
@@ -64,11 +61,11 @@ const getMovies = async (url) => {
       }
 
       const uri = `${url}/check?day=${day}&movie=${movie}`
-
       availableMovies = availableMovies.concat(await fetchMovies(days[i].day, movies[j].title, uri))
     }
   }
   return availableMovies
 }
+console.log('Scraping showtimes...OK')
 
 module.exports.getMovies = getMovies

@@ -35,7 +35,6 @@ function booking (days, movies, resturants) {
               movieTitle: movie.title,
               movieStart: movie.time,
               resturantStart: resturant.startTime + '-' + resturant.endTime,
-
               day: day
             }))
         )

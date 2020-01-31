@@ -1,5 +1,4 @@
 'use strict'
-
 const { JSDOM } = require('jsdom')
 const nodeFetch = require('node-fetch')
 const fetchCookie = require('fetch-cookie/node-fetch')(nodeFetch)
@@ -12,7 +11,6 @@ const fetchCookie = require('fetch-cookie/node-fetch')(nodeFetch)
  */
 
 const getDinner = async (url) => {
-  console.log(url)
   const res = await fetchCookie(url + '/login', {
     method: 'POST',
     headers: {
@@ -34,11 +32,17 @@ const getDinner = async (url) => {
       startTime: radioButtons[i].value.substring(3, 5),
       endTime: radioButtons[i].value.substring(5)
     }
+    if (booking.startTime.length === 2) {
+      booking.startTime += ':00'
+    }
+    if (booking.endTime.length === 2) {
+      booking.endTime += ':00'
+    }
 
     bookings.push(booking)
   }
 
   return bookings
 }
-
+console.log('Scraping possible reservations...OK')
 module.exports = { getDinner }

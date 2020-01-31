@@ -12,7 +12,6 @@ const fetch = require('node-fetch')
 const getBody = async url => {
   const result = await fetch(url)
   const html = await result.text()
-
   return new JSDOM(html).window.document.body
 }
 
@@ -21,6 +20,7 @@ const getLinks = async url => {
   return Array.from(body.querySelectorAll('a[href]'))
     .map(element => element.href)
 }
+console.log('Scraping links...OK')
 
 module.exports.getLinks = getLinks
 module.exports.getBody = getBody

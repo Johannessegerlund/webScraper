@@ -31,5 +31,6 @@ const getAvailableDays = async url => {
 
   return availableDays
 }
+console.log('Scraping available days...OK')
 
 module.exports.getAvailableDays = getAvailableDays
