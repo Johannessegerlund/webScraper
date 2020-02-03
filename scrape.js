@@ -2,12 +2,12 @@ const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 
 const fetch = require('node-fetch')
+
 /**
- * Här fetchar jag url's och använder denna som min scrap funtion.
+ * Here I fetch the url and make it a readeble text with jsdom.
  *
- * @param {Function} getBody
- * @param url
- * @param {Function} getLinks
+ * @param {string} url Url.
+ * @returns {object} Jsdom html object.
  */
 const getBody = async url => {
   const result = await fetch(url)
@@ -15,6 +15,12 @@ const getBody = async url => {
   return new JSDOM(html).window.document.body
 }
 
+/**
+ * Here I get the urls from getbody.
+ *
+ * @returns {Array} All href´s.
+ * @param {string} url Url.
+ */
 const getLinks = async url => {
   const body = await getBody(url)
   return Array.from(body.querySelectorAll('a[href]'))

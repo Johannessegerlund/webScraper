@@ -4,16 +4,6 @@ const calender = require('./calender')
 const cinema = require('./cinema')
 const dinner = require('./dinner')
 
-/**
- * Använder mig av urln sedan får jag html sidorna.
- * Scrapar days för att plocka fram informationen om vilka dagar de är tillgängliga.
- * Sedan book events för att samanställa tider som passar angående film och resturang.
- *
- *@param {Function} days
- *@param {Function} movies
- *@param {Function} resturang
- */
-
 ;(async () => {
   const url = process.argv.slice(2)
   if (url.length === 0) {

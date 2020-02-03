@@ -25,9 +25,9 @@ const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
 })
 
 /**
- * Går igenom filmerna och scrapar sidan sedan lopar jag igenom dagar med film titel.
+ * Goes through the movies and days and returns the avaible movies.
  *
- * @param {string} url
+ * @param {string} url Url.
  */
 const getMovies = async (url) => {
   let day = ''

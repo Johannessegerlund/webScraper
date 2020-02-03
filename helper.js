@@ -1,8 +1,9 @@
 
-// const flatten = xxs => xxs.reduce((xs, x) => Array.isArray(x) ? xs.concat(flatten(x)) : xs.concat(x), [])
-
 /**
- * @param arrOrArr
+ * Flatten the array of movies etc.
+ *
+ * @param {Array} arrOrArr Array.
+ * @returns {Array} A flatten array.
  */
 function flatten (arrOrArr) {
   const flattenArr = []
@@ -19,9 +20,12 @@ function flatten (arrOrArr) {
 }
 
 /**
- * @param days
- * @param movies
- * @param resturants
+ * Returns a flatten array thean filter it and parse it.
+ *
+ * @param {object} days Days.
+ * @param {object} movies Movies.
+ * @param {object} resturants Resturant.
+ * @returns {Array} A flatten array.
  */
 function booking (days, movies, resturants) {
   return flatten(
