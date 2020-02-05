@@ -20,7 +20,7 @@ const dinner = require('./dinner')
 
   const bookEvents = await helper.booking(days, movies, resturant)
 
-  console.log('\n Recommendations \n =============== \n')
+  console.log('\n Recommendations \n ===============')
   console.log('* On ' + bookEvents[0].day + ' the movie ' + '"' + bookEvents[0].movieTitle + '"' + ' starts at ' + bookEvents[0].movieStart + ' and there is a free table between ' + bookEvents[0].resturantStart)
   console.log('* On ' + bookEvents[1].day + ' the movie ' + '"' + bookEvents[1].movieTitle + '"' + ' starts at ' + bookEvents[1].movieStart + ' and there is a free table between ' + bookEvents[1].resturantStart)
 })()
