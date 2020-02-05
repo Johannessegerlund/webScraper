@@ -2,7 +2,7 @@ const { getBody, getLinks } = require('./scrape')
 /**
  * Här får jag ut dagarna och skrapar dessa för att få ut tiderna som synkar i deras kalender.
  *
- * @param {string} url // qonfjpoiqejfr.
+ * @param {string} url Url.
  */
 const getUserCalendar = async url => {
   const body = await getBody(url)

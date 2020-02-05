@@ -21,7 +21,6 @@ const getDinner = async (url) => {
 
   const html = await res.text()
   const body = new JSDOM(html).window.document.body
-  // const alsoValues = Array.from(body.querySelectorAll('input[type=radio]')).map(radioButton => radioButton.value)
   const radioButtons = Array.from(body.querySelectorAll('input[type=radio]'))
 
   const bookings = []

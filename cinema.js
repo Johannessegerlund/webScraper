@@ -9,7 +9,6 @@ const axios = require('axios')
 
 const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
   const returningDayAndMovie = []
-
   res.data.forEach(time => {
     if (time.status === 1) {
       returningDayAndMovie.push({
@@ -17,6 +16,7 @@ const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
         day: day.toLowerCase(),
         time: time.time.substring(0, 5),
         movie: time.movie.substring(0, 2)
+
       })
     }
   })
@@ -59,7 +59,6 @@ const getMovies = async (url) => {
       } else if (movies[j].title === 'A Day at the Races') {
         movie = '03'
       }
-
       const uri = `${url}/check?day=${day}&movie=${movie}`
       availableMovies = availableMovies.concat(await fetchMovies(days[i].day, movies[j].title, uri))
     }
