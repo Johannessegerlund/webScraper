@@ -20,7 +20,7 @@ function flatten (arrOrArr) {
 }
 
 /**
- * Returns a flatten array then filter it so it matches days, resturant and movie.
+ * Return a flatten array then filter it so it matches days, resturant and movie.
  *
  * @param {object} days Days.
  * @param {object} movies Movies.
