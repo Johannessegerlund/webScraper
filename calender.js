@@ -1,6 +1,6 @@
 const { getBody, getLinks } = require('./scrape')
 /**
- * Här får jag ut dagarna och skrapar dessa för att få ut tiderna som synkar i deras kalender.
+ * Here I fetch the days and checks so its avaible.
  *
  * @param {string} url Url.
  */

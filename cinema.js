@@ -1,10 +1,10 @@
 const { getBody } = require('./scrape')
 const axios = require('axios')
 /**
- * Här fetchar jag titel dag och id för filmerna gör sedan dessa till läsbar text och utan punkter etc
- * med substring.
+ * Here I fetch the title day and id for the movies then makes it lowercase and seperate time
+ * with substring.
  *
- * @param {Function} fetchMovies
+ * @returns {object} Returning days movie and time.
  */
 
 const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
@@ -16,7 +16,6 @@ const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
         day: day.toLowerCase(),
         time: time.time.substring(0, 5),
         movie: time.movie.substring(0, 2)
-
       })
     }
   })
@@ -28,6 +27,7 @@ const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
  * Goes through the movies and days and returns the avaible movies.
  *
  * @param {string} url Url.
+ * @returns {object} Returning avaiable days movie and time.
  */
 const getMovies = async (url) => {
   let day = ''

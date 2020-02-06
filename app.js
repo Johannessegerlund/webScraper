@@ -19,9 +19,7 @@ const dinner = require('./dinner')
   const resturant = await dinner.getDinner(dinnerURL)
 
   const bookEvents = await helper.booking(days, movies, resturant)
-
   const capitalizeFirstChar = str => str.charAt(0).toUpperCase() + str.substring(1)
-
   console.log('\nRecommendations\n===============')
   console.log('* On ' + capitalizeFirstChar(bookEvents[0].day) + ' the movie ' + '"' + bookEvents[0].movieTitle + '"' + ' starts at ' + bookEvents[0].movieStart + ' and there is a free table between ' + bookEvents[0].resturantStart + '.')
   console.log('* On ' + capitalizeFirstChar(bookEvents[1].day) + ' the movie ' + '"' + bookEvents[1].movieTitle + '"' + ' starts at ' + bookEvents[1].movieStart + ' and there is a free table between ' + bookEvents[1].resturantStart + '.')

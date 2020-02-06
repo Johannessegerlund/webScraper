@@ -1,6 +1,6 @@
 
 /**
- * Flatten the array of movies etc.
+ * Flatten the array of movies etc (current).
  *
  * @param {Array} arrOrArr Array.
  * @returns {Array} A flatten array.
@@ -20,7 +20,7 @@ function flatten (arrOrArr) {
 }
 
 /**
- * Returns a flatten array thean filter it and parse it.
+ * Returns a flatten array then filter it so it matches days, resturant and movie.
  *
  * @param {object} days Days.
  * @param {object} movies Movies.
