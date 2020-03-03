@@ -5,6 +5,7 @@ const axios = require('axios')
  * with substring.
  *
  * @returns {object} Returning days movie and time.
+ * @param url
  */
 
 const fetchMovies = async (day, title, uri) => axios.get(uri).then(res => {
@@ -40,7 +41,6 @@ const getMovies = async (url) => {
   const movies = Array.from(body.querySelectorAll('#movie option'))
     .filter(option => !option.disabled)
     .map(option => ({ id: option.value, title: option.textContent }))
-
   for (let i = 0; i < days.length; i++) {
     if (days[i].day === 'Friday') {
       day = '05'
@@ -52,13 +52,15 @@ const getMovies = async (url) => {
 
     for (let j = 1; j < movies.length; j++) {
       let movie = movies[j].title
-      if (movies[j].title === 'The Flying Deuces') {
-        movie = '01'
-      } else if (movies[j].title === 'Keep Your Seats, Please') {
-        movie = '02'
-      } else if (movies[j].title === 'A Day at the Races') {
-        movie = '03'
+
+      if (movie === movies[j].title) {
+        movie = movies[j].id
+      } else if (movie === movies[j].title) {
+        movie = movies[j].id
+      } else if (movie === movies[j].title) {
+        movie = movies[j].id
       }
+
       const uri = `${url}/check?day=${day}&movie=${movie}`
       availableMovies = availableMovies.concat(await fetchMovies(days[i].day, movies[j].title, uri))
     }
